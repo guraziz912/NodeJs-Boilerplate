@@ -1,17 +1,16 @@
-const nodemailer = require('nodemailer');
-const sendgridTransport = require('nodemailer-sendgrid-transport');
+const nodemailer = require("nodemailer");
+const sendgridTransport = require("nodemailer-sendgrid-transport");
 
 const transporter = nodemailer.createTransport(
   sendgridTransport({
     auth: {
-      apiKey:
-        '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',
+      apiKey: "Add you api key here",
     },
   })
 );
 
 // file system
-const fs = require('fs');
+const fs = require("fs");
 
 module.exports = class SendMail {
   // Sending HTML mail
@@ -22,7 +21,6 @@ module.exports = class SendMail {
       subject: process.env.EMAIL_SUBJECT,
       html: `<h1>Successfull sign up. Welcome ${name} </h1>`,
     });
-    console.log(sentMail);
     return sentMail;
   }
 
@@ -38,17 +36,17 @@ module.exports = class SendMail {
 
   // Sending email with attachment
   async sendMailWithAttachment() {
-    fs.readFile('../assets/attachmentFiles/welcome.jpg', (err, data) => {
+    fs.readFile("../assets/attachmentFiles/welcome.jpg", (err, data) => {
       transporter.sendMail({
         to: this.email,
         from: process.env.EMAIL_FROM,
         subject: process.env.EMAIL_SUBJECT,
         attachments: [
           {
-            filename: 'hello.jpeg',
+            filename: "hello.jpeg",
             content: data,
-            type: 'application/jpeg',
-            disposition: 'attachment',
+            type: "application/jpeg",
+            disposition: "attachment",
           },
         ],
         html: `<h1>Successfull sign up. Welcome ${this.name} </h1>`,
