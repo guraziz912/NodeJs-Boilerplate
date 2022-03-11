@@ -1,3 +1,19 @@
 # NodeJs-Boilerplate
+## Installation
 
-Clone the project and run **npm i** to install all the dependencies and then run the project using command **npm run start**.
+```bash
+$ npm install
+```
+
+## Running the app
+
+```bash
+# development
+$ npm run start
+
+# watch mode
+$ npm run start:dev
+
+# production mode
+$ npm run start:prod
+``
